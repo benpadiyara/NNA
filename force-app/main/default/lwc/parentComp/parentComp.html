@@ -1,0 +1,66 @@
+<template>
+    <lightning-card title="Account List" icon-name="standard:account">
+        <p>{labels}</p>
+        <h1 class="ab">THIS IS FOR CSS</h1>
+        <!--<lightning-layout vertical-align="center">
+            <lightning-layout-item padding="around-small">
+                <template if:true={selectedAcc}>
+                    <p>{selectedAcc.Name}</p>
+                    <p>{selectedAcc.Phone}</p>
+
+                </template>
+            </lightning-layout-item> 
+        </lightning-layout>-->
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item padding="around-small">
+                <lightning-input label="Find Account" value={searchKey} onchange={handleChange}>
+
+                </lightning-input>
+            </lightning-layout-item> 
+        </lightning-layout>
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item padding="around-small">
+                <lightning-button label="Find Accounts" variant="brand" onclick={findAccount}>
+                    
+                </lightning-button>
+            </lightning-layout-item> 
+        </lightning-layout>
+        <!--With li Tag and wire-->
+       <!-- <lightning-layout vertical-align="center">
+        <ul class="slds-has-dividers_around slds-has-block-links">
+            <template for:each={accountList} for:item="acc">
+                
+                <li key={acc.Id} class="slds-item">
+                    <lightning-layout-item padding="around-small">
+                    <p><lightning-formatted-text value={acc.Id}></lightning-formatted-text></p>
+                    <p><lightning-formatted-text value={acc.Name}></lightning-formatted-text></p>
+                    <p><lightning-formatted-phone value={acc.Phone}></lightning-formatted-phone></p>
+
+                    </lightning-layout-item>
+                    
+                </li>
+            
+            </template>
+        </ul> 
+        </lightning-layout>-->
+        <!-- With Data Table-->
+        <!--<div if:true={accountList}>
+        <lightning-layout vertical-align="center">
+            <div style="height: 300px;">
+                <lightning-datatable
+                        key-field="id"
+                        data={accountList}
+                        columns={columns}>
+                </lightning-datatable>
+            </div> 
+        </lightning-layout>
+        </div>-->
+
+        <!--Displaying with child component-->
+        <template for:each={accountList} for:item="acc">
+            <c-child-Comp key={acc.Id} onselect={handleSelectRec} acc={acc}></c-child-Comp> 
+        </template>
+
+    </lightning-card>
+    
+</template>
